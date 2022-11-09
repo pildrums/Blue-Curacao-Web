@@ -1,46 +1,16 @@
-# Getting Started with Create React App
+droppable: 어떤 것을 드롭할 수 있는 영역 (Board 영역)  
+draggable: 어떤 것을 드래그 할 수 있는 영역 (Card 영역)  
+droppable, draggable 안에 children은 반드시 함수로 넣어줘야 함  
+children 안에 함수의 첫번째 인자는 innerRef, placeholder, droppableProps를 가지고 있음  
+draggable의 속성 중 dragHandleProps는 특정 영역을 통해서만 드래그를 가능하도록 하고 싶을 때 사용(그것이 아니라 Card 자체를 드래그 하고 싶으면 Card component에 적용)  
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+DragDropContext는 onDragEnd props를 넣어줘야 함  
+onDragEnd는 드래그가 끝나고 무엇을 해야 할 지 결정하는 함수  
+map 함수를 사용할 때는 반드시 array여야 함  
+ui를 만들 때는 일단 dummy data로 array를 만들고 map 함수 적용  
 
-## Available Scripts
-
-In the project directory, you can run:
-
-### `yarn start`
-
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
-### `yarn test`
-
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `yarn build`
-
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `yarn eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+result: DropResult  
+result.draggableId: 드래그 되었던 Draggable의 id  
+result.type: 드래그 되었던 Draggable의 type  
+result.source: Draggable 이 시작된 위치(location)  
+result.destination: Draggable이 끝난 위치(location). 만약에 Draggable이 시작한 위치와 같은 위치로 돌아오면 이 destination값은 null이 될 것
